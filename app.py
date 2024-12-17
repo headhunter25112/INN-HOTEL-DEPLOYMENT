@@ -12,8 +12,6 @@ with open('transformer.pkl', 'rb') as file:
 
 def prediction(input_list): 
 
-    input_list= np.array(input_list, dtype= object)
-
     pred= model.predict_proba([input_list])[:,1][0]
 
     if pred>0.5:
@@ -37,7 +35,7 @@ def main():
                   else 6)
     weekd= st.selectbox('What is the week day of arrival', ['Mon', 'Tue', 'Wed', 'Thu','Fri', 'Sat', 'Sun'])
 
-    tran_data= pt.tranform([[lt, price]])
+    tran_data= pt.tranform([[float(lt), float(price)]])
     lt_t= tran_data[0][0]
     price_t=  tran_data[0][1]
 
